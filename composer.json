@@ -1,0 +1,11 @@
+{
+    "name": "mhamstra/modx.org",
+    "description": "MODX.org website",
+    "authors": [
+        {
+            "name": "Mark Hamstra",
+            "email": "hello@markhamstra.com"
+        }
+    ],
+    "require": {}
+}
