@@ -1,0 +1,72 @@
+body {
+	padding: 2em;
+}
+.avatars {
+	margin: 0 -3em -3em;
+	text-align: center;
+}
+.avatar {
+	display: inline-block;
+	width: 72px;
+	height: 72px;
+	list-style-type: none;
+	position: relative;
+}
+.avatar.active::after {
+	color: red;
+	content: "";
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 0 0 15px 15px;
+	border-color: transparent transparent #04BD1B transparent;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+section[role=main] {
+	border: 1px solid #ccc;
+	padding: 3em;
+	background-color: #eee;
+}
+.no-left-padding {
+	padding-left: 0;
+}
+.no-right-padding {
+	padding-right: 0;
+}
+.error {
+	padding: 1em 1em 0 1em;
+	margin-bottom: 1em;
+	background-color: #ECA6A6;
+	border: 1px dashed red;
+}
+.success {
+	padding: 1em 1em 0 1em;
+	margin-bottom: 1em;
+	background-color: #99ff99;
+	border: 1px dashed green;
+}
+.main-wrapper {
+	max-width: 896px; /* makes nices rows of 12 images */
+	margin-bottom: 2em;
+}
+
+.alert-box {
+  border: 1px solid #2ba6cb;
+  padding: 1em;
+  background-color: #fff;
+  margin-bottom: 1em;
+}
+
+
+@media all and (max-width: 640px) {
+	body {
+		padding: 0;
+	}
+	section[role=main] {
+		padding: 1em;
+	}
+
+}
