@@ -30,9 +30,6 @@ $app->container->singleton('slack', function () {
 
 // The home page here
 $app->get('/', function () use ($app) {
-    // Output the header
-    $app->render('_header.php');
-
     $info = $app->slack->getInfo();
     $_users = $info['users'];
     $users = array();
@@ -71,9 +68,6 @@ $app->get('/', function () use ($app) {
         'users' => $users,
         'total' => count($users),
     ]);
-
-    // Output the footer
-    $app->render('_footer.php');
 })->name('slack');
 
 // POSTing to /slack/invite will send an invite for the requested email address
@@ -82,7 +76,7 @@ $app->post('/slack/invite', function () use ($app) {
     $email = $app->request->post('email');
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $app->flash('invite', 'Please enter a valid email address.');
-        $app->redirect('/');
+        $app->redirectTo('slack');
     }
 
     // Send the slack invite
@@ -102,7 +96,7 @@ $app->post('/slack/invite', function () use ($app) {
     }
 
     // Redirect back to the home page; the flash will show a success/error message there.
-    $app->redirect('/');
+    $app->redirectTo('slack');
 })->name('slack/invite');
 
 // Run the app
