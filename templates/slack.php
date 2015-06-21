@@ -1,3 +1,5 @@
+<?php require "_header.php" ?>
+
 <div class="large-8 columns push-2 main-wrapper">
     <section role="main">
         <h1>Chat about MODX on <a href="https://slack.com/">Slack!</a></h1>
@@ -10,10 +12,9 @@
 
                 <?php
                 $msg = $flash['invite'];
-                if (!empty($msg)) {
-                    echo "<div class=\"alert-box\">{$msg}</div>";
-                }
-                ?>
+                if (!empty($msg)): ?>
+                <div class="alert-box"><?php echo $msg; ?></div>
+                <?php endif ?>
                 <form method="post" action="/slack/invite">
                     <input type="hidden" name="send_invite" value="1">
                     <input type="email" name="email" placeholder="my@email.com">
@@ -32,15 +33,14 @@
 
 
         <ul class="avatars">
-            <?php
-            foreach ($users as $user) {
-                $classes = 'avatar' . ($user['active'] ? ' active' : '');
-                echo '<li class="' . $classes . '">
-    <img width="72" height="72" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-        data-src="' . $user['image'] . '" alt="' . $user['name'] . '">
-</li>';
-            }
-            ?>
+            <?php foreach ($users as $user) : ?>
+            <li class="<?php echo 'avatar' . ($user['active'] ? ' active' : ''); ?>">
+                <img width="72" height="72" src="data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
+        data-src="<?php echo $user['image']; ?>" alt="<?php echo $user['name']; ?>">
+            </li>
+            <?php endforeach ?>
         </ul>
     </section>
 </div>
+
+<?php require "_footer.php" ?>
